@@ -5,12 +5,12 @@ from wsgi.models import Link
 
 @app.route('/')
 def index():
-    return render_template('index.html', title='Url Shortener')
+    return render_template('index.html', title='Citly')
 
 
 @app.route('/add-link', methods=['GET', 'POST'])
 def add_link():
-    links = Link.query.all()
+    links = Link.query.all()[0:7]
     if request.method == 'POST':
         original_url = request.form['original_url']
         add_url = Link(original_url=original_url)
@@ -18,7 +18,7 @@ def add_link():
         db.session.commit()
         return redirect(url_for('add_link'))
 
-    return render_template('add_link_and_state.html', links=links, title='Home')
+    return render_template('add_link_and_state.html', links=links, title='Citly | Url Shotener')
 
 
 @app.route('/<short_url>')

@@ -8,7 +8,7 @@
     {% if title %}
     <title>{{title}}</title>
     {% else %}
-    <title>Url Shortner</title>
+    <title>Citly</title>
     {% endif %}
 </head>
 <body>
@@ -16,9 +16,9 @@
 
         <div class="header">
             <div class="logo">
-                <h2><span>C</span>itly</h2>
+                <h2><a href="{{ url_for('index') }} "><span>C</span>itly</a></h2>
             </div>
-            
+
             <div class="header_btns">
                 <a href="#">Log in</a>
                 <a href="#">Sign up</a>
@@ -28,7 +28,7 @@
         <div class="main_content">
             <h1>Short links, big results</h1>
             <p>A URL shortener built with powerful tools to help you grow and protect your brand.</p>
-            <a href="#">Get Started for Free</a>
+            <a href=" {{ url_for('add_link') }} ">Get Started for Free</a>
         </div>
     </div>
     

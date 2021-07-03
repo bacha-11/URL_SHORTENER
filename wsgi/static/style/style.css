@@ -48,6 +48,17 @@ body{
 }
 
 
+.header .logo h2 a{
+    color: #fff;
+    transition: 1s linear all;
+}
+
+
+.header .logo h2 a:hover{
+    color: red;
+}
+
+
 .header .header_btns{
     font-size: 20px;
     margin-right: 3rem;
@@ -112,6 +123,93 @@ body{
 
 
 
+.blured_bg_image{
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+.get_url_form{
+    width: 100%;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.get_url_form form{
+    width: 50%;
+    height: 11vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.get_url_form form input[type='text']{
+    width: 70%;
+    height: 100%;
+    border: 1px solid #fff;
+    outline: none;
+    background: none;
+    font-size: 18px;
+    padding-left: 10px;
+    border-radius: 10px;
+}
+
+
+.get_url_form form input[type='text']::placeholder{
+    font-size: 18px;
+}
+
+
+.get_url_form form input[type='submit']{
+    width: 25%;
+    height: 100%;
+    color: #fff;
+    font-size: 18px;
+    letter-spacing: 2px;
+    outline: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: blueviolet;
+    border: 1px solid blueviolet;
+}
+
+
+.get_url_form form input[type='submit']:hover{
+    background: none;
+    border: 1px solid #fff;
+}
+
+
+.state_table{
+    width: 100%;
+    height: 57vh;
+    overflow-x:auto;
+    background-color: #fff;
+}
+
+
+.state_table table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+
+.state_table th, td {
+    padding: 10px;
+    width: 20%;
+}
+
+
+.state_table tr:nth-child(even){background-color: #f2f2f2}
+
 
 
 
@@ -124,4 +222,9 @@ body{
         margin: 60px;
         background-color: rgba(0, 0, 0, 0.5);
     }
+
+    .get_url_form form{
+        width: 90%;
+    }
+
 }

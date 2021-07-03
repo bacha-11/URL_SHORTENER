@@ -4,21 +4,59 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
+    {% if title %}
+    <title>{{title}}</title>
+    {% else %}
+    <title>Citly</title>
+    {% endif %}
 </head>
 <body>
-    <h1>Url Shortener</h1>
     
-    <form action="" method="POST">
-        <input type="text" name="original_url">
-        <input type="submit">
-    </form>
-    <br>
-    <br>
-    <br>
-    {% for link in links %}
-    <h2>Original Url <span> {{link.original_url}} </span> </h2><br>
-    <h2>Short Url <span>  {{url_for('redirect_to_url', short_url=link.short_url, _external=True)}}</span> </h2><br>
-    {% endfor %}
+    <div class="bg_image">
+        <div class="blured_bg_image">
+
+            <div class="header">
+                <div class="logo">
+                    <h2><a href="{{ url_for('index') }} "><span>C</span>itly</a></h2>
+                </div>
+    
+                <div class="header_btns">
+                    <a href="#">Links</a>
+                    <a href="#">Logout</a>
+                </div>
+            </div>
+
+            <div class="get_url_form">
+                <form action="" method="POST">
+                    <input type="text" name="original_url" placeholder="Shorten your url" required>
+                    <input type="submit" value="Shorten">
+                </form>
+            </div>
+
+            <div class="state_table">
+                <table>
+                    <tr>
+                        <th>Original Url</th>
+                        <th>Shorten Url</th>
+                        <th>Visite</th>
+                        <th>Remove</th>
+                    </tr>
+
+                    {% for link in links %}
+                    <tr>
+                        <td>{{link.original_url|truncate(40, True)}}</td>
+                        <td>{{url_for('redirect_to_url', short_url=link.short_url, _external=True)}}</td>
+                        <td> {{link.visite}} </td>
+                        <td> {{link.visite}} </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+
+        </div>
+    </div>
+    
 </body>
 </html>

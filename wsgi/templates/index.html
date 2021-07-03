@@ -4,21 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
+    {% if title %}
+    <title>{{title}}</title>
+    {% else %}
+    <title>Url Shortner</title>
+    {% endif %}
 </head>
 <body>
-    <h1>Url Shortener</h1>
+    <div class="bg_image">
+
+        <div class="header">
+            <div class="logo">
+                <h2><span>C</span>itly</h2>
+            </div>
+            
+            <div class="header_btns">
+                <a href="#">Log in</a>
+                <a href="#">Sign up</a>
+            </div>
+        </div>
+
+        <div class="main_content">
+            <h1>Short links, big results</h1>
+            <p>A URL shortener built with powerful tools to help you grow and protect your brand.</p>
+            <a href="#">Get Started for Free</a>
+        </div>
+    </div>
     
-    <form action="" method="POST">
-        <input type="text" name="original_url">
-        <input type="submit">
-    </form>
-    <br>
-    <br>
-    <br>
-    {% for link in links %}
-    <h2>Original Url <span> {{link.original_url}} </span> </h2><br>
-    <h2>Short Url <span> <a href="{{url_for('redirect_to_url', short_url=link.short_url, _external=True)}}"> {{url_for('redirect_to_url', short_url=link.short_url, _external=True)}}</a></span> </h2><br>
-    {% endfor %}
 </body>
 </html>

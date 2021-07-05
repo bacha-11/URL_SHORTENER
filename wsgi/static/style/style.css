@@ -187,9 +187,13 @@ body{
 
 .state_table{
     width: 100%;
-    height: 57vh;
+    height: 47vh;
     overflow-x:auto;
     background-color: #fff;
+}
+
+.state_table_height{
+    height: 77vh;
 }
 
 
@@ -197,20 +201,69 @@ body{
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%;
-    border: 1px solid #ddd;
     text-align: center;
 }
 
 
 .state_table th, td {
-    padding: 10px;
+    padding: 11px;
     width: 20%;
+}
+
+
+.state_table td span{
+    color: brown;
+}
+
+
+.state_table td span:hover{
+    color: red;
 }
 
 
 .state_table tr:nth-child(even){background-color: #f2f2f2}
 
 
+
+.pagination{
+    width: 90%;
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0px auto;
+    margin-top: 10px;
+}
+
+
+.pagination a{
+    color: #fff;
+    height: 100%;
+    width: 10%;
+    line-height: 8vh;
+    letter-spacing: 2px;
+    text-align: center;
+    border-radius: 4px;
+    background-color: blueviolet;
+}
+
+
+.pagination a:hover{
+    background: none;
+    color: black;
+    border: 1px solid #2e2d2d;
+}
+
+
+.footer{
+    width: 100%;
+    height: 10vh;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
 
 
 
@@ -225,6 +278,11 @@ body{
 
     .get_url_form form{
         width: 90%;
+    }
+
+
+    .pagination a{
+        width: 19%;
     }
 
 }

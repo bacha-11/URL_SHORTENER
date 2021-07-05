@@ -13,7 +13,7 @@
     {% endif %}
 </head>
 <body>
-    
+
     <div class="bg_image">
         <div class="blured_bg_image">
 
@@ -23,19 +23,12 @@
                 </div>
     
                 <div class="header_btns">
-                    <a href=" {{ url_for('list_of_links') }} ">Links</a>
+                    <a href=" {{ url_for('add_link') }} ">Add Link</a>
                     <a href="#">Logout</a>
                 </div>
             </div>
 
-            <div class="get_url_form">
-                <form action="" method="POST">
-                    <input type="text" name="original_url" placeholder="Shorten your url" required>
-                    <input type="submit" value="Shorten">
-                </form>
-            </div>
-
-            <div class="state_table">
+            <div class="state_table state_table_height">
                 <table>
                     <tr>
                         <th>Original Url</th>
@@ -53,11 +46,18 @@
                     </tr>
                     {% endfor %}
                 </table>
+
+                <div class="pagination">
+                    <a href="">Previous</a>
+                    <a href="">Next</a>
+                </div>
+
             </div>
 
             <div class="footer">
                 Copyright 2021
             </div>
+
 
         </div>
     </div>

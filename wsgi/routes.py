@@ -38,7 +38,8 @@ def remove_url(id):
     if link:
         db.session.delete(link)
         db.session.commit()
-        return redirect(url_for('add_link'))
+        return redirect(request.referrer)
+
 
 
 @app.route('/list-of-links')

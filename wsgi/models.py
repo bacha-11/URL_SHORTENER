@@ -1,8 +1,29 @@
-from enum import unique
-from wsgi import db
+from wsgi import db, login
 from datetime import datetime
 import string
 from random import choices
+from flask_login import UserMixin
+from werkzeug.security import check_password_hash, generate_password_hash
+
+
+class User(db.Model, UserMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(132))
+    email = db.Column(db.String(64))
+    password_hash = db.Column(db.String(132))
+    links = db.relationship('Link', backref='owner')
+
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+    
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
+
+
+@login.user_loader
+def load_user(id):
+    return User.query.get(int(id))
+
 
 
 class Link(db.Model):
@@ -11,6 +32,7 @@ class Link(db.Model):
     short_url = db.Column(db.String(7), unique=True)
     visite = db.Column(db.Integer, default=0)
     date_create = db.Column(db.DateTime, default=datetime.now)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 
     def __init__(self, **kwargs):

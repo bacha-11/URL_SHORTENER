@@ -1,11 +1,21 @@
 from wsgi import app, db
 from flask import render_template, redirect, url_for, request
-from wsgi.models import Link
+from wsgi.models import Link, User
 
 
 @app.route('/')
 def index():
     return render_template('index.html', title='Citly')
+
+
+@app.route('/user-registration')
+def registration():
+    return render_template('registration.html', title="Citly Registration")
+
+
+@app.route('/user-login')
+def login():
+    return render_template('login.html', title="Citly Login")
 
 
 @app.route('/add-link', methods=['GET', 'POST'])

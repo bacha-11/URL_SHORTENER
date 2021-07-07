@@ -13,6 +13,8 @@
     {% endif %}
 </head>
 <body>
+
+    {% include '_flashmessage.html' %}
     
     <div class="bg_image">
         <div class="blured_bg_image">
@@ -24,7 +26,7 @@
     
                 <div class="header_btns">
                     <a href=" {{ url_for('list_of_links') }} ">Links</a>
-                    <a href="#">Logout</a>
+                    <a href=" {{ url_for('logout') }} ">Logout</a>
                 </div>
             </div>
 

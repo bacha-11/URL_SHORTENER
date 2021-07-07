@@ -7,6 +7,7 @@
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
+    list-style-type: none;
 }
 
 
@@ -309,7 +310,33 @@ body{
 .register_form form input::placeholder{
     color: #f2f2f2;
     font-size: 14px;
-} 
+}
+
+
+.flash_message{
+    width: 100%;
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem 0 1rem;
+    justify-content: space-between;
+}
+
+
+.success{
+    background-color: rgb(15, 138, 15);
+}
+
+
+.warning{
+    background-color: rgb(201, 173, 15);
+}
+
+
+.flash_message .fa-times{
+    cursor: pointer;
+    color: #f2f2f2;
+}
 
 
 

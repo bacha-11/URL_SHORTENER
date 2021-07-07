@@ -13,15 +13,18 @@
     {% endif %}
 </head>
 <body>
+
+    {% include '_flashmessage.html' %}
     
     <div class="bg_image">
         <div class="blured_bg_image">
+
             <div class="register_form">
                 <h1>LogIn</h1>
                 <form action="" method="POST">
                     <input type="text" name="username" placeholder="Enter username" required>
                     <input type="password" name="password" placeholder="Enter password" required>
-                    <input type="checkbox"> <span>Remember Me</span>
+                    <input type="checkbox" name="remember_me"> <span>Remember Me</span>
                     <input type="submit" value="Login">
                 </form>
 
@@ -32,3 +35,16 @@
 
         </div>
     </div>
+
+
+    <script>
+        function hideDiv(){
+            let flash_message = document.getElementById('removediv')
+            console.log(flash_message)
+            flash_message.style.display = "none" 
+        }
+    
+    </script>
+
+</body>
+</html>

@@ -1,56 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
-    {% if title %}
-    <title>{{title}}</title>
-    {% else %}
-    <title>Citly</title>
-    {% endif %}
-</head>
-<body>
+{% extends 'base.html' %}
 
-    {% include '_flashmessage.html' %}
 
-    <div class="bg_image">
+{% block content %}
 
-        <div class="header">
-            <div class="logo">
-                <h2><a href="{{ url_for('index') }} "><span>C</span>itly</a></h2>
-            </div>
 
-            <div class="header_btns">
+<div class="bg_image">
 
-                {% if current_user.is_anonymous %}
-                <a href=" {{ url_for('login') }} ">Log in</a>
-                <a href=" {{ url_for('registration') }} ">Sign up</a>
-                {% else %}
-                <a href=" {{ url_for('add_link') }} ">Add Link</a>
-                <a href="{{ url_for('logout') }}">Logout</a>
-                {% endif %}
-            </div>
+    <div class="header">
+        <div class="logo">
+            <h2><a href="{{ url_for('index') }} "><span>C</span>itly</a></h2>
         </div>
 
-        
+        <div class="header_btns">
 
-        <div class="main_content">
-            <h1>Short links, big results</h1>
-            <p>A URL shortener built with powerful tools to help you grow and protect your brand.</p>
-            <a href=" {{ url_for('add_link') }} ">Get Started for Free</a>
+            {% if current_user.is_anonymous %}
+            <a href=" {{ url_for('login') }} ">Log in</a>
+            <a href=" {{ url_for('registration') }} ">Sign up</a>
+            {% else %}
+            <a href=" {{ url_for('add_link') }} ">Add Link</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+            {% endif %}
         </div>
     </div>
 
-<script>
-    function hideDiv(){
-        let flash_message = document.getElementsByClassName('flash_message')
-        console.log(flash_message)
-    }
-
-</script>
     
-</body>
-</html>
+
+    <div class="main_content">
+        <h1>Short links, big results</h1>
+        <p>A URL shortener built with powerful tools to help you grow and protect your brand.</p>
+        <a href=" {{ url_for('add_link') }} ">Get Started for Free</a>
+    </div>
+</div>
+
+
+
+{% endblock %}

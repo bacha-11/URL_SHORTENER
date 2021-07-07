@@ -71,6 +71,10 @@ def logout():
 @app.route('/add-link', methods=['GET', 'POST'])
 @login_required
 def add_link():
+    if not current_user.is_authenticated:
+        flash('Please login to access this page!', 'warning')
+        return redirect(url_for('login'))
+
     links = Link.query.filter_by(user_id=current_user.id).order_by(Link.date_create.desc()).all()[0:6]
     if request.method == 'POST':
         original_url = request.form['original_url']
@@ -96,6 +100,10 @@ def redirect_to_url(short_url):
 @app.route('/remove_url/<id>')
 @login_required
 def remove_url(id):
+    if not current_user.is_authenticated:
+        flash('Please login to access this page!', 'warning')
+        return redirect(url_for('login'))
+
     link = Link.query.filter_by(id=id).first_or_404()
     if link:
         db.session.delete(link)
@@ -107,6 +115,10 @@ def remove_url(id):
 @app.route('/list-of-links')
 @login_required
 def list_of_links():
+    if not current_user.is_authenticated:
+        flash('Please login to access this page!', 'warning')
+        return redirect(url_for('login'))
+        
     links = Link.query.filter_by(user_id=current_user.id).all()
     return render_template('list_of_links.html', title='Citly Links', links=links)
 

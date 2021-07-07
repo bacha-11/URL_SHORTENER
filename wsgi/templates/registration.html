@@ -1,38 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
-    {% if title %}
-    <title>{{title}}</title>
-    {% else %}
-    <title>Citly</title>
-    {% endif %}
-</head>
-<body>
+{% extends 'base.html' %}
 
-    {% include '_flashmessage.html' %}
-    
-    <div class="bg_image">
-        <div class="blured_bg_image">
 
-            <div class="register_form">
-                <h1>Registration</h1>
-                <form action="" method="POST">
-                    <input type="text" name="username" placeholder="Enter username" required>
-                    <input type="email" name="email" placeholder="Enter email" required>
-                    <input type="password" name="password" placeholder="Enter password" required>
-                    <input type="password" name="repeatpassword" placeholder="Repeat password" required>
-                    <input type="submit" value="Register">
-                </form>
+{% block content %}
 
-                <div class="new_user">
-                    <span style="color: rgb(248, 206, 66);">Already Register? </span> <a href=" {{ url_for('login') }} " style="color: #f2f2f2;">login now</a>
-                </div>
+
+<div class="bg_image">
+    <div class="blured_bg_image">
+
+        <div class="header">
+            <div class="logo">
+                <h2><a href="{{ url_for('index') }} "><span>C</span>itly</a></h2>
             </div>
-
+    
+            <div class="header_btns">
+    
+                {% if current_user.is_anonymous %}
+                <a href=" {{ url_for('login') }} ">Log in</a>
+                <a href=" {{ url_for('registration') }} ">Sign up</a>
+                {% else %}
+                <a href=" {{ url_for('add_link') }} ">Add Link</a>
+                <a href="{{ url_for('logout') }}">Logout</a>
+                {% endif %}
+            </div>
         </div>
+
+        <div class="register_form">
+            <h1>Registration</h1>
+            <form action="" method="POST">
+                <input type="text" name="username" placeholder="Enter username" required>
+                <input type="email" name="email" placeholder="Enter email" required>
+                <input type="password" name="password" placeholder="Enter password" required>
+                <input type="password" name="repeatpassword" placeholder="Repeat password" required>
+                <input type="submit" value="Register">
+            </form>
+
+            <div class="new_user">
+                <span style="color: rgb(248, 206, 66);">Already Register? </span> <a href=" {{ url_for('login') }} " style="color: #f2f2f2;">login now</a>
+            </div>
+        </div>
+
     </div>
+</div>
+
+
+{% endblock %}
